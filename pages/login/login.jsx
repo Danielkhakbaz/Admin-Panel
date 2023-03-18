@@ -89,7 +89,7 @@ const LoginPage = () => {
         padding={6}
       >
         <Flex width={{ base: 160, sm: 200 }}>
-          <img src={PostmanLogo} alt="BankID logo" />
+          <img src={PostmanLogo} alt="logo" />
         </Flex>
         <Flex
           background="white"
