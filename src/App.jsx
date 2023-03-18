@@ -1,5 +1,12 @@
+import { Router } from "src/Router";
+import "styles/app.scss";
+
 const App = () => {
-  return <>Dani</>;
+  return (
+    <>
+      <Router />
+    </>
+  );
 };
 
 export default App;
