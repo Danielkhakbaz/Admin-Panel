@@ -12,6 +12,7 @@ import {
   Center,
   Text,
   useToast,
+  useColorMode,
 } from "@chakra-ui/react";
 import PostmanLogo from "assets/logos/postman-logo.png";
 import styles from "styles/modules/login.module.scss";
@@ -25,7 +26,14 @@ const LoginPage = () => {
 
   const toast = useToast();
 
+  const { colorMode } = useColorMode();
+
   useEffect(() => {
+    if (colorMode === "dark") {
+      localStorage.setItem("chakra-ui-color-mode", "light");
+
+      navigate(0);
+    }
     document.title = "پنل داشبورد پروژه ایکس";
 
     usernameRef.current.focus();
@@ -44,7 +52,7 @@ const LoginPage = () => {
           title: "شما با موفقیت وارد شدید",
           status: "success",
           duration: 2000,
-          position: "bottom-right",
+          position: "bottom-left",
           containerStyle: {
             fontSize: "14px",
           },
@@ -54,7 +62,7 @@ const LoginPage = () => {
           title: "اطلاعات کاربری نادرست است",
           status: "error",
           duration: 2000,
-          position: "bottom-right",
+          position: "bottom-left",
           containerStyle: {
             fontSize: "14px",
           },
