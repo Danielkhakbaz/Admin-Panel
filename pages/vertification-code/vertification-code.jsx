@@ -8,8 +8,8 @@ import {
   Input,
   Button,
   Link,
-  Text,
   Heading,
+  Text,
   useToast,
   useColorMode,
 } from "@chakra-ui/react";
@@ -17,7 +17,7 @@ import { useAPI } from "hooks/useApi";
 import PostmanLogo from "assets/logos/postman-logo.png";
 import styles from "styles/modules/login.module.scss";
 
-const LoginPage = () => {
+const VertificationCodePage = () => {
   const [buttonLoadingState, setButtonLoadingState] = useState();
 
   const phoneNumberRef = useRef();
@@ -28,7 +28,7 @@ const LoginPage = () => {
 
   const { colorMode } = useColorMode();
 
-  const { loginRequest } = useAPI();
+  const { sendVertificationCode } = useAPI();
 
   useEffect(() => {
     if (colorMode === "dark") {
@@ -36,19 +36,17 @@ const LoginPage = () => {
 
       navigate(0);
     }
-    document.title = "صفحه ورود | پنل داشبورد پروژه ایکس";
+    document.title = "ارسال کد تائید | پنل داشبورد پروژه ایکس";
 
     phoneNumberRef.current.focus();
   }, []);
 
-  const handleClick = ({ phoneNumber, password }) => {
+  const handleClick = ({ phoneNumber }) => {
     setButtonLoadingState(true);
 
-    loginRequest(phoneNumber, password)
+    sendVertificationCode(phoneNumber)
       .then(({ data }) => {
-        navigate("/dashboard");
-
-        localStorage.setItem("token", data.token);
+        navigate("/forgot-password");
 
         return toast({
           title: data.message,
@@ -76,7 +74,7 @@ const LoginPage = () => {
       });
   };
   const handleEnter = (event, values) => {
-    if (event.key === "Enter" && values.phoneNumber && values.password) {
+    if (event.key === "Enter" && values.phoneNumber) {
       handleClick(values);
     }
   };
@@ -108,16 +106,20 @@ const LoginPage = () => {
             <Formik
               initialValues={{
                 phoneNumber: "",
-                password: "",
               }}
             >
               {({ values, errors, touched, isValid, dirty }) => (
                 <form
-                  style={{ width: "100%" }}
+                  style={{
+                    width: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 2,
+                  }}
                   onKeyDown={(event) => handleEnter(event, values)}
                 >
                   <Heading size="md" textAlign="center" paddingY={4}>
-                    ورود
+                    ارسال کد تائید
                   </Heading>
                   <FormControl
                     isRequired
@@ -141,25 +143,6 @@ const LoginPage = () => {
                       fontSize={{ base: 12, sm: 14 }}
                     />
                   </FormControl>
-                  <FormControl
-                    isRequired
-                    isInvalid={!!errors.password && touched.password}
-                    marginY={2}
-                  >
-                    <FormLabel fontSize={{ base: 11, sm: 12 }}>
-                      رمز عبور
-                    </FormLabel>
-                    <Field
-                      as={Input}
-                      autoComplete=""
-                      name="password"
-                      type="password"
-                      dir="ltr"
-                      maxLength={20}
-                      variant="outline"
-                      fontSize={{ base: 12, sm: 14 }}
-                    />
-                  </FormControl>
                   <Button
                     colorScheme="primary"
                     width="100%"
@@ -169,15 +152,15 @@ const LoginPage = () => {
                     isLoading={buttonLoadingState}
                     onClick={() => handleClick(values)}
                   >
-                    ورود
+                    ارسال کد
                   </Button>
                 </form>
               )}
             </Formik>
           </Flex>
           <Flex flexDirection="column" gap={3}>
-            <Link color="primary.500" fontSize={10} href="/vertification-code">
-              رمزعبور خود را فراموش کردید؟
+            <Link color="primary.500" fontSize={10} href="/login">
+              صفحه ورود به سایت
             </Link>
             <Text fontSize={{ base: 8, sm: 9 }} textAlign="center">
               تمامی حقوق این وب‌سایت متعلق به <b>پروژه ایکس</b> می‌باشد&copy;
@@ -189,4 +172,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default VertificationCodePage;

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Flex, Heading, Text, Link, Button } from "@chakra-ui/react";
 
-const NotFound = () => {
+const NotFoundPage = () => {
   const [countDown, setCountDown] = useState(5);
 
   const navigate = useNavigate();
@@ -49,4 +49,4 @@ const NotFound = () => {
   );
 };
 
-export default NotFound;
+export default NotFoundPage;
