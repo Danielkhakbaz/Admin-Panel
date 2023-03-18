@@ -26,6 +26,8 @@ const LoginPage = () => {
   const toast = useToast();
 
   useEffect(() => {
+    document.title = "پنل داشبورد پروژه ایکس";
+
     usernameRef.current.focus();
   }, []);
 
