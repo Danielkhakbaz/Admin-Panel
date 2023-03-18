@@ -3,10 +3,10 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 const LoginPage = lazy(() => import("pages/login/login"));
 const Layout = lazy(() => import("layout/layout"));
-const Index = lazy(() => import("pages/index/index"));
-const Table1 = lazy(() => import("pages/table-1/table-1"));
-const Table2 = lazy(() => import("pages/table-2/table-2"));
-const Settings = lazy(() => import("pages/settings/settings"));
+const Index = lazy(() => import("pages/dashboard"));
+const Table1 = lazy(() => import("pages/dashboard/table-1/table-1"));
+const Table2 = lazy(() => import("pages/dashboard/table-2/table-2"));
+const Settings = lazy(() => import("pages/dashboard/settings/settings"));
 const NotFound = lazy(() => import("pages/404/404"));
 
 export const Router = () => {
