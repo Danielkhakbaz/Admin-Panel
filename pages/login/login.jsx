@@ -4,16 +4,16 @@ import { Formik, Field } from "formik";
 import * as Yup from "yup";
 import {
   Flex,
-  Input,
   FormControl,
   FormLabel,
   FormErrorMessage,
+  Input,
   Button,
   Center,
   Text,
   useToast,
 } from "@chakra-ui/react";
-import BankidLogo from "assets/logos/postman-logo.png";
+import PostmanLogo from "assets/logos/postman-logo.png";
 import styles from "styles/modules/login.module.scss";
 
 const LoginPage = () => {
@@ -79,7 +79,7 @@ const LoginPage = () => {
         padding={6}
       >
         <Flex width={{ base: 160, sm: 200 }}>
-          <img src={BankidLogo} alt="BankID logo" />
+          <img src={PostmanLogo} alt="BankID logo" />
         </Flex>
         <Flex
           background="white"
@@ -161,7 +161,7 @@ const LoginPage = () => {
                     width="100%"
                     fontSize={{ base: 13, sm: 16 }}
                     marginTop={6}
-                    disabled={!isValid || !dirty}
+                    isDisabled={!isValid || !dirty}
                     isLoading={buttonLoadingState}
                     onClick={() => handleClick(values)}
                   >
