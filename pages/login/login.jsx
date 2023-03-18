@@ -46,7 +46,7 @@ const LoginPage = () => {
       setButtonLoadingState(false);
 
       if (username === "admin" && password === "admin") {
-        navigate("dashboard");
+        navigate("/dashboard");
 
         return toast({
           title: "شما با موفقیت وارد شدید",
