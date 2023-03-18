@@ -10,15 +10,17 @@ const NotFound = () => {
   useEffect(() => {
     document.title = "صفحه‌ای یافت نشد | پنل داشبورد پروژه ایکس";
 
-    setTimeout(() => {
-      if (countDown > 0) {
-        setCountDown(() => countDown - 1);
-      }
+    const countDownTimer = setInterval(() => {
+      setCountDown((previousCountDown) => previousCountDown - 1);
     }, 1000);
 
-    setTimeout(() => {
-      navigate("/");
-    }, 5000);
+    return () => {
+      clearInterval(countDownTimer);
+
+      if (countDown === 1) {
+        navigate("/");
+      }
+    };
   }, [countDown]);
 
   return (
