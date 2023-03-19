@@ -1,19 +1,19 @@
-import { lazy } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-
-const LoginPage = lazy(() => import("pages/login/login"));
-const VertificationCodePage = lazy(() =>
-  import("pages/vertification-code/vertification-code")
-);
-const ForgotPassword = lazy(() =>
-  import("pages/forgot-password/forgot-password")
-);
-const Layout = lazy(() => import("layout/layout"));
-const Index = lazy(() => import("pages/dashboard"));
-const Table1 = lazy(() => import("pages/dashboard/table-1/table-1"));
-const Table2 = lazy(() => import("pages/dashboard/table-2/table-2"));
-const Settings = lazy(() => import("pages/dashboard/settings/settings"));
-const NotFound = lazy(() => import("pages/404/404"));
+import {
+  LoginPage,
+  VertificationCodePage,
+  ForgotPassword,
+  Layout,
+  Index,
+  FinancialAssistance,
+  NonFinancialAssistance,
+  Sliders,
+  Settings,
+  ContactUs,
+  AboutUs,
+  Footer,
+  NotFound,
+} from "src/Routes.jsx";
 
 export const Router = () => {
   return (
@@ -24,9 +24,21 @@ export const Router = () => {
         <Route path="forgot-password" element={<ForgotPassword />} />
         <Route path="dashboard" element={<Layout />}>
           <Route index element={<Index />} />
-          <Route path="table-1" element={<Table1 />} />
-          <Route path="table-2" element={<Table2 />} />
-          <Route path="settings" element={<Settings />} />
+          <Route
+            path="financial-assistance"
+            element={<FinancialAssistance />}
+          />
+          <Route
+            path="non-financial-assistance"
+            element={<NonFinancialAssistance />}
+          />
+          <Route path="sliders" element={<Sliders />} />
+          <Route path="settings" element={<Settings />}>
+            <Route index element={<Settings />} />
+            <Route path="change-contactus" element={<ContactUs />} />
+            <Route path="change-aboutus" element={<AboutUs />} />
+            <Route path="change-footer" element={<Footer />} />
+          </Route>
         </Route>
         <Route path="404" element={<NotFound />} />
         <Route path="/" element={<Navigate to="login" />} />

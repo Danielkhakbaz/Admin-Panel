@@ -1,5 +1,5 @@
 export const MenuItems = [
-  { title: "جدول شماره یک", link: "table-1" },
-  { title: "جدول شماره دو", link: "table-2" },
-  { title: "تنظیمات", link: "settings" },
+  { title: "لیست کمک‌های نقدی", link: "financial-assistance" },
+  { title: "لیست کمک‌های غیرنقدی", link: "non-financial-assistance" },
+  { title: "اسلایدر", link: "sliders" },
 ];

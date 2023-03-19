@@ -36,7 +36,7 @@ const LoginPage = () => {
 
       navigate(0);
     }
-    document.title = "صفحه ورود | پنل داشبورد پروژه ایکس";
+    document.title = "ورود | پنل داشبورد پروژه ایکس";
 
     phoneNumberRef.current.focus();
   }, []);

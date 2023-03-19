@@ -12,6 +12,14 @@ import {
   useColorMode,
   useDisclosure,
 } from "@chakra-ui/react";
+import {
+  Box,
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  AccordionIcon,
+} from "@chakra-ui/react";
 import { MenuItems } from "layout/dashboard/menu-drawer/menu-items";
 import PostmanLogo from "assets/logos/postman-logo.png";
 import { FaBars } from "react-icons/fa";
@@ -78,11 +86,81 @@ const MenuDrawer = () => {
                       color="white"
                       paddingY={7}
                       onClick={onClose}
+                      _hover={{ colorScheme: "primary" }}
                     >
                       <Text>{title}</Text>
                     </Button>
                   </Link>
                 ))}
+                <Accordion allowToggle>
+                  <AccordionItem>
+                    <AccordionButton
+                      as={Button}
+                      width="100%"
+                      colorScheme="primary"
+                      color="white"
+                      paddingY={7}
+                      _hover={{ colorScheme: "primary" }}
+                    >
+                      <Box as="span" textAlign="left">
+                        تنظیمات
+                      </Box>
+                      <AccordionIcon />
+                    </AccordionButton>
+                    <AccordionPanel
+                      display="flex"
+                      flexDirection="column"
+                      gap={4}
+                      paddingY={4}
+                    >
+                      <Link
+                        href={`/dashboard/settings/change-contactus`}
+                        _hover={{ textDecoration: "none" }}
+                      >
+                        <Button
+                          width="100%"
+                          fontSize={14}
+                          backgroundColor="primary.700"
+                          color="white"
+                          paddingY={5}
+                          _hover={{ backgroundColor: "primary.900" }}
+                        >
+                          تغییر متن ارتباط با ما
+                        </Button>
+                      </Link>
+                      <Link
+                        href={`/dashboard/settings/change-aboutus`}
+                        _hover={{ textDecoration: "none" }}
+                      >
+                        <Button
+                          width="100%"
+                          fontSize={14}
+                          backgroundColor="primary.700"
+                          color="white"
+                          paddingY={5}
+                          _hover={{ backgroundColor: "primary.900" }}
+                        >
+                          تغییر متن درباره ما
+                        </Button>
+                      </Link>
+                      <Link
+                        href={`/dashboard/settings/change-footer`}
+                        _hover={{ textDecoration: "none" }}
+                      >
+                        <Button
+                          width="100%"
+                          fontSize={14}
+                          backgroundColor="primary.700"
+                          color="white"
+                          paddingY={5}
+                          _hover={{ backgroundColor: "primary.900" }}
+                        >
+                          تغییر متن فوتر
+                        </Button>
+                      </Link>
+                    </AccordionPanel>
+                  </AccordionItem>
+                </Accordion>
               </Flex>
             </DrawerBody>
           </DrawerContent>

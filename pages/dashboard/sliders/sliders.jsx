@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { Heading, Skeleton } from "@chakra-ui/react";
 
-const Table1 = () => {
+const Sliders = () => {
   const [loadingState, setLoadingState] = useState();
 
   useEffect(() => {
-    document.title = "جدول یک | پنل داشبورد پروژه ایکس";
+    document.title = "اسلایدر | پنل داشبورد پروژه ایکس";
 
     setTimeout(() => {
       setLoadingState(true);
@@ -15,10 +15,10 @@ const Table1 = () => {
   return (
     <>
       <Skeleton width="fit-content" isLoaded={loadingState}>
-        <Heading>Table 1</Heading>
+        <Heading>Sliders</Heading>
       </Skeleton>
     </>
   );
 };
 
-export default Table1;
+export default Sliders;
