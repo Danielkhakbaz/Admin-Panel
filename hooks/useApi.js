@@ -1,10 +1,15 @@
 import axios from "axios";
 
-export const useAPI = () => {
-  const API = axios.create({
-    baseURL: "http://193.39.9.216/",
-  });
+let accessToken = localStorage.getItem("token");
 
+const API = axios.create({
+  baseURL: "http://193.39.9.216/",
+  headers: {
+    Authorization: `Bearer ${accessToken}`,
+  },
+});
+
+export const useAPI = () => {
   const loginRequest = async (phoneNumber, password) => {
     return await API.post("/api/auth/login", {
       phone: phoneNumber,
@@ -33,19 +38,18 @@ export const useAPI = () => {
   };
 
   const getFooterText = async () => {
-    const {
-      data: { message },
-    } = await API.get("/api/v1/admin/site-settings", {
+    const { data } = await API.get("/api/v1/admin/site-settings", {
       params: {
-        site_footer: "site_footer",
+        key: "site_footer",
       },
     });
 
-    return message;
+    return data;
   };
-  const setFooterText = async () => {
+  const setFooterText = async (values) => {
     return await API.post("/api/v1/admin/site-settings", {
-      // key,
+      key: "site_footer",
+      values,
       // top_logo,
       // footer_logo,
       // footer_middle_first_text,
@@ -65,11 +69,29 @@ export const useAPI = () => {
     });
   };
 
+  const getAllNonFinancialAssistances = async (page) => {
+    const { data } = await API.get(
+      `/api/v1/admin/non-financial-assistance?page=${page}`
+    );
+
+    return data;
+  };
+
+  const getAllFinancialAssistances = async (page) => {
+    const { data } = await API.get(
+      `/api/v1/admin/payments?page=${page.queryKey[1]}`
+    );
+
+    return data;
+  };
+
   return {
     loginRequest,
     sendVertificationCode,
     resetPassword,
     getFooterText,
     setFooterText,
+    getAllNonFinancialAssistances,
+    getAllFinancialAssistances,
   };
 };
