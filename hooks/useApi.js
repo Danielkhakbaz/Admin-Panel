@@ -46,6 +46,7 @@ export const useAPI = () => {
 
     return data;
   };
+
   const setFooterText = async (values) => {
     return await API.post("/api/v1/admin/site-settings", {
       key: "site_footer",
@@ -69,17 +70,30 @@ export const useAPI = () => {
     });
   };
 
-  const getAllNonFinancialAssistances = async (page) => {
-    const { data } = await API.get(
-      `/api/v1/admin/non-financial-assistance?page=${page}`
-    );
+  const getOneFinancialAssistances = async (id) => {
+    if (id.queryKey[1]) {
+      const { data } = await API.get(
+        `/api/v1/admin/payments/${id.queryKey[1]}`
+      );
+      return data;
+    }
+  };
 
-    return data;
+  const deleteOneFinancialAssistance = async (id) => {
+    return API.delete(`/api/v1/admin/payments/${id}`);
   };
 
   const getAllFinancialAssistances = async (page) => {
     const { data } = await API.get(
       `/api/v1/admin/payments?page=${page.queryKey[1]}`
+    );
+
+    return data;
+  };
+
+  const getAllNonFinancialAssistances = async (page) => {
+    const { data } = await API.get(
+      `/api/v1/admin/non-financial-assistance?page=${page}`
     );
 
     return data;
@@ -91,7 +105,9 @@ export const useAPI = () => {
     resetPassword,
     getFooterText,
     setFooterText,
-    getAllNonFinancialAssistances,
+    getOneFinancialAssistances,
+    deleteOneFinancialAssistance,
     getAllFinancialAssistances,
+    getAllNonFinancialAssistances,
   };
 };

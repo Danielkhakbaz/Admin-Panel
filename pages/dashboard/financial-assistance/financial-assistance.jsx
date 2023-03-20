@@ -17,15 +17,16 @@ const FinancialAssistance = () => {
         alignItems="flex-start"
         gap={4}
       >
-        <Skeleton isLoaded={!isLoading}>
-          <Heading
-            fontSize={{ base: 20, sm: 26, md: 32 }}
-            paddingY={{ base: 1, sm: 2.5, md: 4 }}
-          >
-            لیست کمک‌های نقدی
-          </Heading>
-        </Skeleton>
-        <FinancialAssistanceTable data={data?.items?.data} />
+        <Heading
+          fontSize={{ base: 20, sm: 26, md: 32 }}
+          paddingY={{ base: 1, sm: 2.5, md: 4 }}
+        >
+          <Skeleton isLoaded={!isLoading}>لیست کمک‌های نقدی</Skeleton>
+        </Heading>
+        <FinancialAssistanceTable
+          isLoading={!isLoading}
+          data={data?.items?.data}
+        />
         <Pagination
           total={data?.items?.total}
           itemsPerPage={data?.items?.per_page}

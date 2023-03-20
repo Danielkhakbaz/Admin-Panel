@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import {
   Skeleton,
   TableContainer,
@@ -17,15 +16,7 @@ const thead = [
   { title: "" },
 ];
 
-const NonFinancialAssistanceTable = ({ data }) => {
-  const [loadingState, setLoadingState] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setLoadingState(true);
-    }, 150);
-  }, []);
-
+const NonFinancialAssistanceTable = ({ isLoading, data }) => {
   return (
     <>
       <TableContainer width="100%">
@@ -38,7 +29,7 @@ const NonFinancialAssistanceTable = ({ data }) => {
                   fontSize={{ base: 11, sm: 13, lg: 14 }}
                   textAlign="center"
                 >
-                  <Skeleton isLoaded={loadingState}>{item.title}</Skeleton>
+                  <Skeleton isLoaded={isLoading}>{item.title}</Skeleton>
                 </Th>
               ))}
             </Tr>
@@ -53,10 +44,7 @@ const NonFinancialAssistanceTable = ({ data }) => {
                   alignItems="center"
                   textAlign="center"
                 >
-                  <Skeleton
-                    isLoaded={loadingState}
-                    onClick={() => console.log(item)}
-                  >
+                  <Skeleton isLoaded={isLoading}>
                     {item.institute_name}
                   </Skeleton>
                 </Td>
@@ -65,14 +53,14 @@ const NonFinancialAssistanceTable = ({ data }) => {
                   fontSize={{ base: 10, sm: 11, lg: 12 }}
                   textAlign="center"
                 >
-                  <Skeleton isLoaded={loadingState}>{item.paid_at}</Skeleton>
+                  <Skeleton isLoaded={isLoading}>{item.paid_at}</Skeleton>
                 </Td>
                 <Td
                   height="90px"
                   fontSize={{ base: 10, sm: 11, lg: 12 }}
                   textAlign="center"
                 >
-                  <Skeleton isLoaded={loadingState}>
+                  <Skeleton isLoaded={isLoading}>
                     <b>{item.amount.toLocaleString("fa")} ریال</b>
                   </Skeleton>
                 </Td>

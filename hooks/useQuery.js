@@ -6,23 +6,34 @@ const useFooterText = () => {
 
   return useQuery(["footerText"], getFooterText);
 };
-const useAllNonFinancialAssistances = (page) => {
-  const { getAllNonFinancialAssistances } = useAPI();
 
-  return useQuery(["allNonFinancialAssistances", page], (page) =>
-    getAllNonFinancialAssistances(page)
-  );
+const useOneFinancialAssistances = (id) => {
+  const { getOneFinancialAssistances } = useAPI();
+
+  return useQuery(["oneFinancialAssistances", id], getOneFinancialAssistances);
 };
+
 const useAllFinancialAssistances = (page) => {
   const { getAllFinancialAssistances } = useAPI();
 
-  return useQuery(["allFinancialAssistances", page], (page) =>
-    getAllFinancialAssistances(page)
+  return useQuery(
+    ["allFinancialAssistances", page],
+    getAllFinancialAssistances
+  );
+};
+
+const useAllNonFinancialAssistances = (page) => {
+  const { getAllNonFinancialAssistances } = useAPI();
+
+  return useQuery(
+    ["allNonFinancialAssistances", page],
+    getAllNonFinancialAssistances
   );
 };
 
 export {
   useFooterText,
-  useAllNonFinancialAssistances,
+  useOneFinancialAssistances,
   useAllFinancialAssistances,
+  useAllNonFinancialAssistances,
 };

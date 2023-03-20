@@ -25,7 +25,10 @@ const NonFinancialAssistance = () => {
             لیست کمک‌های غیرنقدی
           </Heading>
         </Skeleton>
-        <NonFinancialAssistanceTable data={data?.items?.data} />
+        <NonFinancialAssistanceTable
+          isLoading={!isLoading}
+          data={data?.items?.data}
+        />
         <Pagination
           total={data?.items?.total}
           itemsPerPage={data?.items?.per_page}
