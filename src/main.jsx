@@ -4,11 +4,12 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { ChakraProvider } from "@chakra-ui/react";
 import { theme } from "themes/theme";
 import { Compose } from "utils/compose/compose";
+import { AuthProvider } from "providers/auth/auth-provider";
 import App from "src/App";
 
 const queryClient = new QueryClient();
 
-const Providers = [];
+const Providers = [AuthProvider];
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

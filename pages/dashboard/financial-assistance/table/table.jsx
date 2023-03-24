@@ -13,7 +13,7 @@ import {
   useToast,
   useDisclosure,
 } from "@chakra-ui/react";
-import CustomModal from "components/modal/modal";
+import FinancialAssistanceModal from "pages/dashboard/financial-assistance/modal/modal";
 import { useAPI } from "hooks/useApi";
 import { MdDelete } from "react-icons/md";
 
@@ -138,7 +138,11 @@ const FinancialAssistanceTable = ({ isLoading, data }) => {
           </Tbody>
         </Table>
       </TableContainer>
-      <CustomModal id={singleDataID} isOpen={isOpen} onClose={onClose} />
+      <FinancialAssistanceModal
+        id={singleDataID}
+        isOpen={isOpen}
+        onClose={onClose}
+      />
     </>
   );
 };

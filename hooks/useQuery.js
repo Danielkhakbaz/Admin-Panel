@@ -22,6 +22,15 @@ const useAllFinancialAssistances = (page) => {
   );
 };
 
+const useOneNonFinancialAssistances = (id) => {
+  const { getOneNonFinancialAssistances } = useAPI();
+
+  return useQuery(
+    ["oneNonFinancialAssistances", id],
+    getOneNonFinancialAssistances
+  );
+};
+
 const useAllNonFinancialAssistances = (page) => {
   const { getAllNonFinancialAssistances } = useAPI();
 
@@ -31,9 +40,31 @@ const useAllNonFinancialAssistances = (page) => {
   );
 };
 
+const useOneSlider = (id) => {
+  const { getOneSlider } = useAPI();
+
+  return useQuery(["oneSlider", id], getOneSlider);
+};
+
+const useAllSliders = (page) => {
+  const { getAllSliders } = useAPI();
+
+  return useQuery(["allSliders", page], getAllSliders);
+};
+
+const useAboutUsText = () => {
+  const { getAboutUsText } = useAPI();
+
+  return useQuery(["aboutUsText"], getAboutUsText);
+};
+
 export {
   useFooterText,
   useOneFinancialAssistances,
   useAllFinancialAssistances,
+  useOneNonFinancialAssistances,
   useAllNonFinancialAssistances,
+  useOneSlider,
+  useAllSliders,
+  useAboutUsText,
 };

@@ -138,7 +138,6 @@ const VertificationCodePage = () => {
                       name="phoneNumber"
                       type="text"
                       dir="ltr"
-                      maxLength={100}
                       variant="outline"
                       fontSize={{ base: 12, sm: 14 }}
                     />

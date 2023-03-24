@@ -17,6 +17,13 @@ export const useAPI = () => {
     });
   };
 
+  const logoutRequest = async (phoneNumber, password) => {
+    return await API.post("/api/auth/logout", {
+      phone: phoneNumber,
+      password,
+    });
+  };
+
   const sendVertificationCode = async (phoneNumber) => {
     return await API.post("/api/auth/verification-code", {
       phone: phoneNumber,
@@ -51,22 +58,6 @@ export const useAPI = () => {
     return await API.post("/api/v1/admin/site-settings", {
       key: "site_footer",
       values,
-      // top_logo,
-      // footer_logo,
-      // footer_middle_first_text,
-      // footer_middle_second_text,
-      // footer_middle_third_text,
-      // footer_right_text,
-      // footer_address,
-      // footer_phone,
-      // footer_email,
-      // footer_instagram,
-      // footer_whatsapp,
-      // footer_aparat,
-      // footer_digital_media,
-      // footer_namad,
-      // footer_yara,
-      // footer_khodmol_hossein,
     });
   };
 
@@ -91,16 +82,57 @@ export const useAPI = () => {
     return data;
   };
 
+  const getOneNonFinancialAssistances = async (id) => {
+    if (id.queryKey[1]) {
+      const { data } = await API.get(
+        `/api/v1/admin/non-financial-assistance/${id.queryKey[1]}`
+      );
+      return data;
+    }
+  };
+
+  const deleteOneNonFinancialAssistance = async (id) => {
+    return API.delete(`/api/v1/admin/non-financial-assistance/${id}`);
+  };
+
   const getAllNonFinancialAssistances = async (page) => {
     const { data } = await API.get(
-      `/api/v1/admin/non-financial-assistance?page=${page}`
+      `/api/v1/admin/non-financial-assistance?page=${page.queryKey[1]}`
     );
 
     return data;
   };
 
+  const getOneSlider = async (id) => {
+    const { data } = await API.get(`/api/v1/admin/sliders/${id}`);
+
+    return data;
+  };
+
+  const getAllSliders = async () => {
+    const { data } = await API.get("/api/v1/admin/sliders");
+
+    return data;
+  };
+
+  const getAboutUsText = async () => {
+    const { data } = await API.get(
+      "/api/v1/admin/site-settings?key=site_about_us"
+    );
+
+    return data;
+  };
+
+  const updateAboutUsText = async (AboutUsText) => {
+    return await API.post("/api/v1/admin/site-settings", {
+      key: "site_about_us",
+      about_us_text: AboutUsText,
+    });
+  };
+
   return {
     loginRequest,
+    logoutRequest,
     sendVertificationCode,
     resetPassword,
     getFooterText,
@@ -108,6 +140,12 @@ export const useAPI = () => {
     getOneFinancialAssistances,
     deleteOneFinancialAssistance,
     getAllFinancialAssistances,
+    getOneNonFinancialAssistances,
+    deleteOneNonFinancialAssistance,
     getAllNonFinancialAssistances,
+    getOneSlider,
+    getAllSliders,
+    getAboutUsText,
+    updateAboutUsText,
   };
 };

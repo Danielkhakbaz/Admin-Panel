@@ -14,6 +14,8 @@ import {
   useColorMode,
 } from "@chakra-ui/react";
 import { useAPI } from "hooks/useApi";
+import { useAuthContext } from "providers/auth/auth-context";
+import { ACTIONS } from "providers/auth/actions";
 import PostmanLogo from "assets/logos/postman-logo.png";
 import styles from "styles/modules/login.module.scss";
 
@@ -29,6 +31,8 @@ const LoginPage = () => {
   const { colorMode } = useColorMode();
 
   const { loginRequest } = useAPI();
+
+  const { dispatch } = useAuthContext();
 
   useEffect(() => {
     if (colorMode === "dark") {
@@ -46,6 +50,11 @@ const LoginPage = () => {
 
     loginRequest(phoneNumber, password)
       .then(({ data }) => {
+        dispatch({
+          type: ACTIONS.SET_USERNAME_AND_PASSWORD,
+          payload: { phoneNumber, password },
+        });
+
         navigate("/dashboard");
 
         localStorage.setItem("token", data.token);
@@ -136,7 +145,6 @@ const LoginPage = () => {
                       name="phoneNumber"
                       type="text"
                       dir="ltr"
-                      maxLength={100}
                       variant="outline"
                       fontSize={{ base: 12, sm: 14 }}
                     />
@@ -155,7 +163,6 @@ const LoginPage = () => {
                       name="password"
                       type="password"
                       dir="ltr"
-                      maxLength={20}
                       variant="outline"
                       fontSize={{ base: 12, sm: 14 }}
                     />

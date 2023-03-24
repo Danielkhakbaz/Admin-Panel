@@ -151,7 +151,6 @@ const ForgotPasswordPage = () => {
                       name="phoneNumber"
                       type="text"
                       dir="ltr"
-                      maxLength={100}
                       variant="outline"
                       fontSize={{ base: 12, sm: 14 }}
                     />
@@ -172,7 +171,6 @@ const ForgotPasswordPage = () => {
                       name="vertificationCode"
                       type="text"
                       dir="ltr"
-                      maxLength={100}
                       variant="outline"
                       fontSize={{ base: 12, sm: 14 }}
                     />
@@ -191,7 +189,6 @@ const ForgotPasswordPage = () => {
                       name="password"
                       type="password"
                       dir="ltr"
-                      maxLength={100}
                       variant="outline"
                       fontSize={{ base: 12, sm: 14 }}
                     />
@@ -213,7 +210,6 @@ const ForgotPasswordPage = () => {
                       name="passwordConfirmation"
                       type="password"
                       dir="ltr"
-                      maxLength={100}
                       variant="outline"
                       fontSize={{ base: 12, sm: 14 }}
                     />

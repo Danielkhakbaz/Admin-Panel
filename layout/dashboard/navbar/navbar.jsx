@@ -1,7 +1,16 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Flex, Text, Button, Skeleton, useColorMode } from "@chakra-ui/react";
+import {
+  Flex,
+  Text,
+  Button,
+  Skeleton,
+  useToast,
+  useColorMode,
+} from "@chakra-ui/react";
 import MenuDrawer from "layout/dashboard/menu-drawer/menu-drawer";
+import { useAPI } from "hooks/useApi";
+import { useAuthContext } from "providers/auth/auth-context";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
 
 const DashboardNavbar = () => {
@@ -9,7 +18,13 @@ const DashboardNavbar = () => {
 
   const navigate = useNavigate();
 
+  const { logoutRequest } = useAPI();
+
+  const toast = useToast();
+
   const { colorMode, toggleColorMode } = useColorMode();
+
+  const { phoneNumber, passoword } = useAuthContext();
 
   useEffect(() => {
     setTimeout(() => {
@@ -43,7 +58,19 @@ const DashboardNavbar = () => {
             colorScheme="red"
             fontSize={12}
             onClick={() => {
-              localStorage.setItem("chakra-ui-color-mode", "light");
+              logoutRequest(phoneNumber, passoword).then(({ data }) => {
+                localStorage.clear();
+
+                toast({
+                  title: data.message,
+                  status: "success",
+                  duration: 2000,
+                  position: "bottom-left",
+                  containerStyle: {
+                    fontSize: "14px",
+                  },
+                });
+              });
 
               navigate("/");
             }}

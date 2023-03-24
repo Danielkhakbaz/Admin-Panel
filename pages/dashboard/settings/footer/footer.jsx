@@ -93,7 +93,6 @@ const Footer = () => {
                       name="footer_middle_first_text.text"
                       type="text"
                       dir="rtl"
-                      maxLength={100}
                       variant="outline"
                       fontSize={{ base: 12, sm: 14 }}
                     />
@@ -110,7 +109,6 @@ const Footer = () => {
                       name="footer_middle_second_text.text"
                       type="text"
                       dir="rtl"
-                      maxLength={100}
                       variant="outline"
                       fontSize={{ base: 12, sm: 14 }}
                     />
@@ -127,7 +125,6 @@ const Footer = () => {
                       name="footer_middle_third_text.text"
                       type="text"
                       dir="rtl"
-                      maxLength={100}
                       variant="outline"
                       fontSize={{ base: 12, sm: 14 }}
                     />
