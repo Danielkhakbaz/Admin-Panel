@@ -58,6 +58,30 @@ const useAboutUsText = () => {
   return useQuery(["aboutUsText"], getAboutUsText);
 };
 
+const useAllSocialApps = () => {
+  const { getAllSocialApps } = useAPI();
+
+  return useQuery(["allSocialApps"], getAllSocialApps);
+};
+
+const useOneSocialApps = (id) => {
+  const { getOneSocialApps } = useAPI();
+
+  return useQuery(["oneSocialApps", id], getOneSocialApps);
+};
+
+const useAllCardInfos = () => {
+  const { getAllCardInfos } = useAPI();
+
+  return useQuery(["allCardInfos"], getAllCardInfos);
+};
+
+const useOneCardInfos = (id) => {
+  const { getOneCardInfos } = useAPI();
+
+  return useQuery(["oneCardInfos", id], getOneCardInfos);
+};
+
 export {
   useFooterText,
   useOneFinancialAssistances,
@@ -67,4 +91,8 @@ export {
   useOneSlider,
   useAllSliders,
   useAboutUsText,
+  useAllSocialApps,
+  useOneSocialApps,
+  useAllCardInfos,
+  useOneCardInfos,
 };

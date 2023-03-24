@@ -130,6 +130,34 @@ export const useAPI = () => {
     });
   };
 
+  const getAllSocialApps = async () => {
+    const { data } = await API.get("/api/v1/admin/contact-us/social-apps");
+
+    return data;
+  };
+
+  const getOneSocialApps = async (id) => {
+    const { data } = await API.get(
+      `/api/v1/admin/contact-us/social-apps/${id}`
+    );
+
+    return data;
+  };
+
+  const getAllCardInfos = async () => {
+    const { data } = await API.get("/api/v1/admin/contact-us/cards-infos");
+
+    return data;
+  };
+
+  const getOneCardInfos = async (id) => {
+    const { data } = await API.get(
+      `/api/v1/admin/contact-us/cards-infos/${id.queryKey[1]}`
+    );
+
+    return data;
+  };
+
   return {
     loginRequest,
     logoutRequest,
@@ -147,5 +175,9 @@ export const useAPI = () => {
     getAllSliders,
     getAboutUsText,
     updateAboutUsText,
+    getAllSocialApps,
+    getOneSocialApps,
+    getAllCardInfos,
+    getOneCardInfos,
   };
 };

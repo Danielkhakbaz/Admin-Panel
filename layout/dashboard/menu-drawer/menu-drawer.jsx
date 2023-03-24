@@ -113,21 +113,60 @@ const MenuDrawer = () => {
                       gap={4}
                       paddingY={4}
                     >
-                      <Link
-                        href={`/dashboard/settings/change-contactus`}
-                        _hover={{ textDecoration: "none" }}
-                      >
-                        <Button
-                          width="100%"
-                          fontSize={14}
-                          backgroundColor="primary.700"
-                          color="white"
-                          paddingY={5}
-                          _hover={{ backgroundColor: "primary.900" }}
-                        >
-                          تغییر متن ارتباط با ما
-                        </Button>
-                      </Link>
+                      <Accordion allowToggle>
+                        <AccordionItem>
+                          <AccordionButton
+                            as={Button}
+                            width="100%"
+                            backgroundColor="primary.700"
+                            color="white"
+                            paddingY={5}
+                            _hover={{ backgroundColor: "primary.900" }}
+                          >
+                            <Box as="span" textAlign="left">
+                              تغییر متن ارتباط با ما
+                            </Box>
+                            <AccordionIcon />
+                          </AccordionButton>
+                          <AccordionPanel
+                            display="flex"
+                            flexDirection="column"
+                            gap={4}
+                            paddingY={4}
+                          >
+                            <Link
+                              href={`/dashboard/settings/change-contactus/social-apps`}
+                              _hover={{ textDecoration: "none" }}
+                            >
+                              <Button
+                                width="100%"
+                                fontSize={14}
+                                backgroundColor="primary.800"
+                                color="white"
+                                paddingY={5}
+                                _hover={{ backgroundColor: "primary.900" }}
+                              >
+                                تغییر اطلاعات شبکه‌های مجازی
+                              </Button>
+                            </Link>
+                            <Link
+                              href={`/dashboard/settings/change-contactus/card-information`}
+                              _hover={{ textDecoration: "none" }}
+                            >
+                              <Button
+                                width="100%"
+                                fontSize={14}
+                                backgroundColor="primary.800"
+                                color="white"
+                                paddingY={5}
+                                _hover={{ backgroundColor: "primary.900" }}
+                              >
+                                تغییر اطلاعات خیریه
+                              </Button>
+                            </Link>
+                          </AccordionPanel>
+                        </AccordionItem>
+                      </Accordion>
                       <Link
                         href={`/dashboard/settings/change-aboutus`}
                         _hover={{ textDecoration: "none" }}

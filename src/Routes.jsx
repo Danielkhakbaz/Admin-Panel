@@ -20,6 +20,12 @@ const Settings = lazy(() => import("pages/dashboard/settings/settings"));
 const ContactUs = lazy(() =>
   import("pages/dashboard/settings/contact-us/contact-us")
 );
+const SocialApps = lazy(() =>
+  import("../pages/dashboard/settings/contact-us/social-apps/social-apps")
+);
+const CardInfo = lazy(() =>
+  import("../pages/dashboard/settings/contact-us/card-info/card-info")
+);
 const AboutUs = lazy(() =>
   import("pages/dashboard/settings/about-us/about-us")
 );
@@ -38,6 +44,8 @@ export {
   Sliders,
   Settings,
   ContactUs,
+  SocialApps,
+  CardInfo,
   AboutUs,
   Footer,
   NotFound,
