@@ -119,6 +119,7 @@ const MenuDrawer = () => {
                             as={Button}
                             width="100%"
                             backgroundColor="primary.700"
+                            fontSize={14}
                             color="white"
                             paddingY={5}
                             _hover={{ backgroundColor: "primary.900" }}

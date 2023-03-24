@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   Flex,
   Button,
@@ -26,9 +26,8 @@ const SocialApps = () => {
           تغییر متن ارتباط با ما‌ | تغییرات اطلاعات شبکه‌های مجازی
         </Heading>
         {data?.items?.data.map((item) => (
-          <>
+          <React.Fragment key={item.id}>
             <FormControl
-              key={item.id}
               isRequired
               width="100%"
               display="flex"
@@ -57,7 +56,7 @@ const SocialApps = () => {
               </Button>
             </FormControl>
             <hr />
-          </>
+          </React.Fragment>
         ))}
       </Flex>
       <SocialAppsModal id={singleDataID} isOpen={isOpen} onClose={onClose} />
